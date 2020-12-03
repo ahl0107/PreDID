@@ -839,20 +839,12 @@
 			path = ElastosDIDSDKTests;
 			sourceTree = "<group>";
 		};
-		115A373A24404DA5005549CC /* include */ = {
+		116C94E8234D825B00BA9777 /* HDKey */ = {
 			isa = PBXGroup;
 			children = (
 				115A373B24404DA5005549CC /* HDkey.h */,
 				115A373C24404DA5005549CC /* crypto.h */,
 				115A373D24404DA5005549CC /* CHDKey.swift */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		116C94E8234D825B00BA9777 /* HDKey */ = {
-			isa = PBXGroup;
-			children = (
-				115A373A24404DA5005549CC /* include */,
 			);
 			path = HDKey;
 			sourceTree = "<group>";

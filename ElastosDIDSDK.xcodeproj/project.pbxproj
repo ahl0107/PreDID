@@ -312,7 +312,7 @@
 		A31ACE3623F19A22008EC032 /* JsonGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31ACE2A23F19A22008EC032 /* JsonGenerator.swift */; };
 		A31ACE3723F19A22008EC032 /* ExtensionInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31ACE2B23F19A22008EC032 /* ExtensionInt.swift */; };
 		A31ACE3B23F19A22008EC032 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31ACE2F23F19A22008EC032 /* DateFormatter.swift */; };
-		A31ACE3C23F19A22008EC032 /* HDKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31ACE3023F19A22008EC032 /* HDKey.swift */; };
+		A31ACE3C23F19A22008EC032 /* HiveHDKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31ACE3023F19A22008EC032 /* HiveHDKey.swift */; };
 		A31ACE3D23F19A22008EC032 /* JsonSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31ACE3123F19A22008EC032 /* JsonSerializer.swift */; };
 		A31ACE3F23F19A22008EC032 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31ACE3323F19A22008EC032 /* DateHelper.swift */; };
 		A31ACE4123F19A22008EC032 /* PathExtracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31ACE3523F19A22008EC032 /* PathExtracter.swift */; };
@@ -702,7 +702,7 @@
 		A31ACE2A23F19A22008EC032 /* JsonGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonGenerator.swift; sourceTree = "<group>"; };
 		A31ACE2B23F19A22008EC032 /* ExtensionInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionInt.swift; sourceTree = "<group>"; };
 		A31ACE2F23F19A22008EC032 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
-		A31ACE3023F19A22008EC032 /* HDKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HDKey.swift; sourceTree = "<group>"; };
+		A31ACE3023F19A22008EC032 /* HiveHDKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiveHDKey.swift; sourceTree = "<group>"; };
 		A31ACE3123F19A22008EC032 /* JsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializer.swift; sourceTree = "<group>"; };
 		A31ACE3323F19A22008EC032 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		A31ACE3523F19A22008EC032 /* PathExtracter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathExtracter.swift; sourceTree = "<group>"; };
@@ -1070,7 +1070,7 @@
 				A31ACE3323F19A22008EC032 /* DateHelper.swift */,
 				A31ACE2F23F19A22008EC032 /* DateFormatter.swift */,
 				A34D732823FA758900B4CB3E /* IDGetter.swift */,
-				A31ACE3023F19A22008EC032 /* HDKey.swift */,
+				A31ACE3023F19A22008EC032 /* HiveHDKey.swift */,
 				A31ACE2B23F19A22008EC032 /* ExtensionInt.swift */,
 				A31ACE3123F19A22008EC032 /* JsonSerializer.swift */,
 				A31ACE2A23F19A22008EC032 /* JsonGenerator.swift */,
@@ -1688,7 +1688,7 @@
 				119B28F12578E68A0084B859 /* Chunk.swift in Sources */,
 				119B290D2578E68A0084B859 /* WritableToken.swift in Sources */,
 				A31ACE1123F199AE008EC032 /* DIDObject.swift in Sources */,
-				A31ACE3C23F19A22008EC032 /* HDKey.swift in Sources */,
+				A31ACE3C23F19A22008EC032 /* HiveHDKey.swift in Sources */,
 				119B28D72578E6890084B859 /* IntSet.swift in Sources */,
 				119B29032578E68A0084B859 /* LexerDFASerializer.swift in Sources */,
 				119B28DA2578E6890084B859 /* CommonUtil.swift in Sources */,

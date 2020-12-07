@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'PreDID'
-  s.version = '1.6.1'
+  s.version = '1.6.3'
   s.summary ='this is a test.'
   s.swift_version  = '4.2'
   s.description = 'this is a test.00000'
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '11.0'
   s.ios.deployment_target = '11.0'
   s.source       = {:git => 'https://github.com/ahl0107/PreDID.git', :tag => s.version}
-  s.source_files = 'ElastosDIDSDK/Source/**/*.{h,m,swift}'
+  s.source_files = 'ElastosDIDSDK/Source/**/*.{h,m,swift,interp,tokens,g4}'
   s.vendored_libraries = 'ElastosDIDSDK/Source/HDKey/lib/*.a'
   s.dependency 'PromiseKit','~> 6.9'
   s.dependency 'BlueRSA', '~> 1.0'

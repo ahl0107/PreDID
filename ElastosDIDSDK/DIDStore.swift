@@ -258,7 +258,7 @@ public class DIDStore: NSObject {
         try storage.storePrivateIdentity(encryptedIdentity)
 
         // Save pre-derived public key
-        let preDerivedKey = try privateIdentity.derive(HiveHDKey.PRE_DERIVED_PUBLICKEY_PATH)
+        let preDerivedKey = try privateIdentity.derive(HiveHDKey.HIVE_PRE_DERIVED_PUBLICKEY_PATH)
         try storage.storePublicIdentity(preDerivedKey.serializePublicKeyBase58())
 
         // Save index
@@ -360,7 +360,7 @@ public class DIDStore: NSObject {
         // For backward compatible, create pre-derived public key if not exist.
         // TODO: Should be remove in the future
         if (!storage.containsPublicIdentity()) {
-            let preDerivedKey = try privateIdentity!.derive(HiveHDKey.PRE_DERIVED_PUBLICKEY_PATH)
+            let preDerivedKey = try privateIdentity!.derive(HiveHDKey.HIVE_PRE_DERIVED_PUBLICKEY_PATH)
             try storage.storePublicIdentity(preDerivedKey.serializePublicKeyBase58())
         }
         return privateIdentity!
@@ -395,7 +395,7 @@ public class DIDStore: NSObject {
         var i = 0
 
         while i < nextIndex || blanks < 20 {
-            let path = HiveHDKey.DERIVE_PATH_PREFIX + "\(i)"
+            let path = HiveHDKey.HIVE_DERIVE_PATH_PREFIX + "\(i)"
             let key: HiveHDKey = try privateIdentity!.derive(path)
             i += 1
             let did = DID(Constants.METHOD, key.getAddress())
@@ -593,7 +593,7 @@ public class DIDStore: NSObject {
         }
 
         let privateIdentity = try loadPrivateIdentity(storePassword)
-        let path = HiveHDKey.DERIVE_PATH_PREFIX + "\(privateIdentityIndex)"
+        let path = HiveHDKey.HIVE_DERIVE_PATH_PREFIX + "\(privateIdentityIndex)"
         let key = try privateIdentity.derive(path)
 
         defer {
@@ -2164,7 +2164,7 @@ public class DIDStore: NSObject {
             let identity = try? loadPrivateIdentity(storePassword)
             if identity != nil {
                 for i in 0..<100 {
-                    let path = HiveHDKey.DERIVE_PATH_PREFIX + "\(i)"
+                    let path = HiveHDKey.HIVE_DERIVE_PATH_PREFIX + "\(i)"
                     let child = try identity!.derive(path)
                     if child.getPrivateKeyData() == keyBytes {
                         extendedKeyBytes = try child.serialize()

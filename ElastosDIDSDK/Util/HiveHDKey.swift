@@ -37,12 +37,12 @@ public class HiveHDKey: NSObject {
     private var key: UnsafePointer<CHDKey>
 
     // Derive path: m/44'/0'/0'/0/index
-    @objc public static let DERIVE_PATH_PREFIX = "44H/0H/0H/0/"
+    @objc public static let HIVE_DERIVE_PATH_PREFIX = "44H/0H/0H/0/"
 
     // Pre-derive publickey path: m/44'/0'/0'
-    @objc public static let PRE_DERIVED_PUBLICKEY_PATH = "44H/0H/0H"
+    @objc public static let HIVE_PRE_DERIVED_PUBLICKEY_PATH = "44H/0H/0H"
 
-    let PUBLICKEY_BASE58_BYTES = 64
+    let HIVE_PUBLICKEY_BASE58_BYTES = 64
 
     required init(_ key: UnsafePointer<CHDKey>) {
         self.key = key
@@ -110,7 +110,7 @@ public class HiveHDKey: NSObject {
     @objc
     public func getPublicKeyBase58() -> String {
         let basePointer: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.allocate(capacity: HiveHDKey.HIVE_PUBLICKEY_BYTES)
-        let cpublickeybase58 = HDKey_GetPublicKeyBase58(key, basePointer, Int32(PUBLICKEY_BASE58_BYTES))
+        let cpublickeybase58 = HDKey_GetPublicKeyBase58(key, basePointer, Int32(HIVE_PUBLICKEY_BASE58_BYTES))
         print(String(cString: cpublickeybase58))
         return String(cString: cpublickeybase58)
     }

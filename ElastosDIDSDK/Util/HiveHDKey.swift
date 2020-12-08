@@ -23,7 +23,7 @@
 import Foundation
 
 @objc(HDKey)
-public class HDKey: NSObject {
+public class HiveHDKey: NSObject {
     @objc public static let HIVE_PUBLICKEY_BYTES : Int = 33
     @objc public static let HIVE_PRIVATEKEY_BYTES: Int = 32
     @objc public static let HIVE_SEED_BYTES: Int = 64

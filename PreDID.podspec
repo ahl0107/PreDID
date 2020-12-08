@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'PreDID'
-  s.version = '2.2'
+  s.version = '2.3'
   s.summary ='this is a test.'
   s.swift_version  = '4.2'
   s.description = 'this is a test.00000'

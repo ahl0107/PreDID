@@ -343,7 +343,7 @@ public class DIDStore: NSObject {
             keyData.removeAll()
         }
 
-        if  keyData.count == HDKey.SEED_BYTES {
+        if  keyData.count == HDKey.HIVE_SEED_BYTES {
             // For backward compatible, convert to extended root private key
             // TODO: Should be remove in the future
             privateIdentity = HDKey(keyData)
@@ -351,7 +351,7 @@ public class DIDStore: NSObject {
             // convert to extended root private key.
             let encryptedIdentity = try DIDStore.encryptToBase64(privateIdentity!.serialize(), storePassword)
             try storage.storePrivateIdentity(encryptedIdentity)
-        } else if keyData.count == HDKey.EXTENDED_PRIVATEKEY_BYTES {
+        } else if keyData.count == HDKey.HIVE_EXTENDED_PRIVATEKEY_BYTES {
             privateIdentity = HDKey.deserialize(keyData)
         } else {
             throw DIDError.didStoreError("invalid private identity")
@@ -2160,7 +2160,7 @@ public class DIDStore: NSObject {
         // For backward compatible, convert to extended private key
         // TODO: Should be remove in the future
         var extendedKeyBytes: Data?
-        if keyBytes.count == HDKey.PRIVATEKEY_BYTES {
+        if keyBytes.count == HDKey.HIVE_PRIVATEKEY_BYTES {
             let identity = try? loadPrivateIdentity(storePassword)
             if identity != nil {
                 for i in 0..<100 {

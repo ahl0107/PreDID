@@ -1947,7 +1947,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Externals/HDKey/lib/$(EFFECTIVE_PLATFORM_NAME)",
+					"$(PROJECT_DIR)/Externals/HDKey/lib/",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = elastos.ElastosDIDSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1982,7 +1982,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Externals/HDKey/lib/$(EFFECTIVE_PLATFORM_NAME)",
+					"$(PROJECT_DIR)/Externals/HDKey/lib/",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = elastos.ElastosDIDSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2152,7 +2152,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Externals/HDKey/lib/$(EFFECTIVE_PLATFORM_NAME)",
 					"$(PROJECT_DIR)/Externals/HDKey/lib",
 				);
 				OTHER_CFLAGS = "-fembed-bitcode";
@@ -2196,7 +2195,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Externals/HDKey/lib/$(EFFECTIVE_PLATFORM_NAME)",
 					"$(PROJECT_DIR)/Externals/HDKey/lib",
 				);
 				OTHER_CFLAGS = "-fembed-bitcode";

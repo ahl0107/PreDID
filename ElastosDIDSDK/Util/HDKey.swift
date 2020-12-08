@@ -24,15 +24,15 @@ import Foundation
 
 @objc(HDKey)
 public class HDKey: NSObject {
-    @objc public static let PUBLICKEY_BYTES : Int = 33
-    @objc public static let PRIVATEKEY_BYTES: Int = 32
-    @objc public static let SEED_BYTES: Int = 64
-    @objc public static let EXTENDED_KEY_BYTES = 82
-    @objc public static let EXTENDED_PRIVATEKEY_BYTES = EXTENDED_KEY_BYTES
-    @objc public static let EXTENDED_PUBLICKEY_BYTES = EXTENDED_KEY_BYTES
+    @objc public static let HIVE_PUBLICKEY_BYTES : Int = 33
+    @objc public static let HIVE_PRIVATEKEY_BYTES: Int = 32
+    @objc public static let HIVE_SEED_BYTES: Int = 64
+    @objc public static let HIVE_EXTENDED_KEY_BYTES = 82
+    @objc public static let HIVE_EXTENDED_PRIVATEKEY_BYTES = HIVE_EXTENDED_KEY_BYTES
+    @objc public static let HIVE_EXTENDED_PUBLICKEY_BYTES = HIVE_EXTENDED_KEY_BYTES
 
-    private static let PADDING_IDENTITY = 0x67
-    private static let PADDING_STANDARD = 0xAD
+    private static let HIVE_PADDING_IDENTITY = 0x67
+    private static let HIVE_PADDING_STANDARD = 0xAD
     
     private var key: UnsafePointer<CHDKey>
 
@@ -71,7 +71,7 @@ public class HDKey: NSObject {
     @objc
     public func getPrivateKeyBytes() -> [UInt8] {
         let privatekeyPointer = HDKey_GetPrivateKey(key)
-        let privatekeyPointerToArry: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: privatekeyPointer, count: HDKey.PRIVATEKEY_BYTES)
+        let privatekeyPointerToArry: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: privatekeyPointer, count: HDKey.HIVE_PRIVATEKEY_BYTES)
         let privatekeyData: Data = Data(buffer: privatekeyPointerToArry)
 
         return [UInt8](privatekeyData)
@@ -80,7 +80,7 @@ public class HDKey: NSObject {
     @objc
     public func getPrivateKeyData() -> Data {
         let privatekeyPointer = HDKey_GetPrivateKey(key)
-        let privatekeyPointerToArry: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: privatekeyPointer, count: HDKey.PRIVATEKEY_BYTES)
+        let privatekeyPointerToArry: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: privatekeyPointer, count: HDKey.HIVE_PRIVATEKEY_BYTES)
 
         return Data(buffer: privatekeyPointerToArry)
     }
@@ -93,7 +93,7 @@ public class HDKey: NSObject {
     @objc
     public func getPublicKeyBytes() ->[UInt8] {
         let cpublicKeyPointer = HDKey_GetPublicKey(key)
-        let publicKeyPointerToArry: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: cpublicKeyPointer, count: HDKey.PUBLICKEY_BYTES)
+        let publicKeyPointerToArry: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: cpublicKeyPointer, count: HDKey.HIVE_PUBLICKEY_BYTES)
         let publicKeyData: Data = Data(buffer: publicKeyPointerToArry)
 
         return [UInt8](publicKeyData)
@@ -102,14 +102,14 @@ public class HDKey: NSObject {
     @objc
     public func getPublicKeyData() -> Data {
         let cpublicKeyPointer = HDKey_GetPublicKey(key)
-        let publicKeyPointerToArry: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: cpublicKeyPointer, count: HDKey.PUBLICKEY_BYTES)
+        let publicKeyPointerToArry: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: cpublicKeyPointer, count: HDKey.HIVE_PUBLICKEY_BYTES)
 
         return Data(buffer: publicKeyPointerToArry)
     }
 
     @objc
     public func getPublicKeyBase58() -> String {
-        let basePointer: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.allocate(capacity: HDKey.PUBLICKEY_BYTES)
+        let basePointer: UnsafeMutablePointer<Int8> = UnsafeMutablePointer<Int8>.allocate(capacity: HDKey.HIVE_PUBLICKEY_BYTES)
         let cpublickeybase58 = HDKey_GetPublicKeyBase58(key, basePointer, Int32(PUBLICKEY_BASE58_BYTES))
         print(String(cString: cpublickeybase58))
         return String(cString: cpublickeybase58)
@@ -180,10 +180,10 @@ public class HDKey: NSObject {
         let cpks: UnsafeMutablePointer<UInt8> = pkData.withUnsafeMutableBytes { (bytes) -> UnsafeMutablePointer<UInt8> in
             return bytes
         }
-        let cextenedkey: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.allocate(capacity: EXTENDED_PRIVATEKEY_BYTES)
+        let cextenedkey: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.allocate(capacity: HIVE_EXTENDED_PRIVATEKEY_BYTES)
 
-        _ = HDKey_PaddingToExtendedPrivateKey(cpks, 32, cextenedkey, UInt32(EXTENDED_PRIVATEKEY_BYTES))
-        let extenedToArrary: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: cextenedkey, count: EXTENDED_PRIVATEKEY_BYTES)
+        _ = HDKey_PaddingToExtendedPrivateKey(cpks, 32, cextenedkey, UInt32(HIVE_EXTENDED_PRIVATEKEY_BYTES))
+        let extenedToArrary: UnsafeBufferPointer<UInt8> = UnsafeBufferPointer(start: cextenedkey, count: HIVE_EXTENDED_PRIVATEKEY_BYTES)
         let extenedData: Data = Data(buffer: extenedToArrary)
 
         return extenedData

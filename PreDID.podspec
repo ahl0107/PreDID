@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'PreDID'
-  s.version = '2.6'
+  s.version = '2.7'
   s.summary ='this is a test.'
   s.swift_version  = '4.2'
   s.description = 'this is a test.00000'
@@ -27,6 +27,6 @@ Pod::Spec.new do |s|
   s.dependency 'KituraContracts','~> 1.1'
   s.dependency 'BlueCryptor', '~> 1.0'
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end
 

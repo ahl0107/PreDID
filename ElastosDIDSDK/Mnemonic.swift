@@ -24,8 +24,8 @@ import Foundation
 
 @objc(Mnemonic)
 public class Mnemonic: NSObject {
-    @objc public static let CHINESE_SIMPLIFIED = "chinese_simplified"
-    @objc public static let CHINESE_TRADITIONAL = "chinese_traditional"
+    @objc public static let HIVE_CHINESE_SIMPLIFIED = "chinese_simplified"
+    @objc public static let HIVE_CHINESE_TRADITIONAL = "chinese_traditional"
     @objc public static let HIVE_CZECH = "Czech"
     @objc public static let HIVE_ENGLISH = "english"
     @objc public static let HIVE_FRENCH = "French"

@@ -4,6 +4,13 @@ def import_pods
   pod 'LoggerAPI', '~> 1.7'
   pod 'KituraContracts', '~> 1.1'
   pod 'BlueCryptor', '~> 1.0'
+  pod 'ReadWriteLock', '~> 1.0'
+  pod 'ObjectMapper'
+  pod 'Swifter'
+  pod 'Alamofire'
+  pod 'Telegraph'
+  
+  pod 'web3swift'
 end
 
 target :ElastosDIDSDK do

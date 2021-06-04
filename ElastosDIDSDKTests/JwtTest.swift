@@ -2,6 +2,7 @@
 import XCTest
 @testable import ElastosDIDSDK
 
+/*
 class JwtTest: XCTestCase {
 
     func testTokenJwt() {
@@ -140,7 +141,7 @@ class JwtTest: XCTestCase {
             let token = try doc.jwtBuilder()
                             .setHeader(h)
                             .setClaims(c)
-                            .sign(using: storePass)
+                            .sign(using: storePassword)
                             .compact()
             XCTAssertNotNil(token)
 
@@ -208,7 +209,7 @@ class JwtTest: XCTestCase {
                 .setExpiration(expiration: exp)
                 .setNotBefore(nbf: nbf)
                 .claim(name: "foo", value: "bar")
-                .sign(withKey: "#key2", using: storePass)
+                .sign(withKey: "#key2", using: storePassword)
                 .compact()
             XCTAssertNotNil(token)
 
@@ -275,7 +276,7 @@ class JwtTest: XCTestCase {
                     .setExpiration(expiration: exp)
                     .setNotBefore(nbf: nbf)
                     .claim(name: "foo", value: "bar")
-                    .sign(withKey: "#key2", using: storePass)
+                    .sign(withKey: "#key2", using: storePassword)
                     .compact()
 
             XCTAssertNotNil(token)
@@ -347,7 +348,7 @@ class JwtTest: XCTestCase {
                 .setNotBefore(nbf: nbf)
                 .claim(name: "foo", value: "bar")
                 .claim(name: "vc", value: dic as Any)
-                .sign(withKey: "#key2", using: storePass)
+                .sign(withKey: "#key2", using: storePassword)
                 .compact()
             XCTAssertNotNil(token)
 
@@ -420,7 +421,7 @@ class JwtTest: XCTestCase {
                     .setNotBefore(nbf: nbf)
                     .claim(name: "foo", value: "bar")
                     .claimWithJson(name: "vc", jsonValue: jsonValue)
-                    .sign(withKey: "#key2", using: storePass)
+                    .sign(withKey: "#key2", using: storePassword)
                     .compact()
             XCTAssertNotNil(token)
 
@@ -498,7 +499,7 @@ class JwtTest: XCTestCase {
                     .setIssuedAt(issuedAt: iat!)
                     .setExpiration(expiration: exp)
                     .setNotBefore(nbf: nbf)
-                    .sign(withKey: "#key2", using: storePass)
+                    .sign(withKey: "#key2", using: storePassword)
                     .compact()
             XCTAssertNotNil(token)
 
@@ -573,7 +574,7 @@ class JwtTest: XCTestCase {
                     .setIssuedAt(issuedAt: iat!)
                     .setExpiration(expiration: exp)
                     .setNotBefore(nbf: nbf)
-                    .sign(withKey: "#key2", using: storePass)
+                    .sign(withKey: "#key2", using: storePassword)
                     .compact()
             XCTAssertNotNil(token)
 
@@ -649,7 +650,7 @@ class JwtTest: XCTestCase {
                     .setExpiration(expiration: exp)
                     .setNotBefore(nbf: nbf)
                     .addClaims(claims: node)
-                    .sign(withKey: "#key2", using: storePass)
+                    .sign(withKey: "#key2", using: storePassword)
                     .compact()
             XCTAssertNotNil(token)
 
@@ -723,7 +724,7 @@ class JwtTest: XCTestCase {
                     .setExpiration(expiration: exp)
                     .setNotBefore(nbf: nbf)
                     .addClaimsWithJson(jsonClaims: json)
-                    .sign(withKey: "#key2", using: storePass)
+                    .sign(withKey: "#key2", using: storePassword)
                     .compact()
             XCTAssertNotNil(token)
 
@@ -789,7 +790,7 @@ class JwtTest: XCTestCase {
                 .setExpiration(expiration: exp)
                 .setNotBefore(nbf: nbf)
                 .claim(name: "foo", value: "bar")
-                .sign(withKey: "#key2", using: storePass)
+                .sign(withKey: "#key2", using: storePassword)
                 .compact()
             XCTAssertNotNil(token)
             print(token)
@@ -829,3 +830,4 @@ class JwtTest: XCTestCase {
     }
 
 }
+*/

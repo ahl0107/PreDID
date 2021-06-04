@@ -73,7 +73,7 @@ class DIDURLTest: XCTestCase {
     }
     
     func testGetDid() {
-        XCTAssertEqual(testDID, url.did.description)
+        XCTAssertEqual(testDID, url.did!.description)
     }
 
    func testGetParameters() {
@@ -134,10 +134,10 @@ class DIDURLTest: XCTestCase {
 
     func testHashCode() {
         var other: DIDURL = try! DIDURL(testURL)
-//        XCTAssertEqual(url.hash, other.hash) // TODO:
+        XCTAssertEqual(url.hash, other.hash) // TODO:
 
         other = try! DIDURL("did:elastos:1234567890#test")
-//        XCTAssertNotEqual(url.hash, other.hash) // TODO:
+        XCTAssertNotEqual(url.hash, other.hash) // TODO:
     }
 
     func testEquals() {

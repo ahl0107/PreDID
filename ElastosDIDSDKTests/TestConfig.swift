@@ -3,20 +3,12 @@ import Foundation
 
 let root: String = "\(NSHomeDirectory())/Library/Caches/DIDStore"
 let tempDir: String = "\(root)/tempDir"
+var storeRoot: String = "\(root)"
 
-let storeRoot: String = "\(root)/storeRoot"
-let storePass: String = "passwd"
+let storePassword: String = "passwd"
 let passphrase: String = "secret"
 
-let walletDir: String = "/Users/liaihong/.wallet"
-
-let networkConfig: String = "TestNet"
-let resolver: String = "http://api.elastos.io:21606"
-let walletId: String = "test"
-let walletPassword: String = "11111111"
-
-//let networkConfig: String = "MainNet"
-//let resolver: String = "http://api.elastos.io:20606"
-//let walletId: String = "MainNetTest"
-//let walletPassword: String = "00001111"
+let walletPath = "/Users/liaihong/idchain.privnet.wallet"
+let rpcEndpoint = "http://52.80.107.251:1111"
+let contractAddress = "0xEA2256bd30cfeC643203d1a6f36A90A4fD17863E"
 

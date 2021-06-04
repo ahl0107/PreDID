@@ -9,10 +9,10 @@
 Pod::Spec.new do |s|
 
   s.name = 'PreDID'
-  s.version = '2.8'
+  s.version = '3.0'
   s.summary ='this is a test.'
   s.swift_version  = '4.2'
-  s.description = 'this is a test.00000'
+  s.description = 'this is a test. 00000'
   s.homepage     = 'https://github.com/ahl0107'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { 'did-dev' => 'liaihong@gmail.com' }

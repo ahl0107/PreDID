@@ -21,6 +21,7 @@
 */
 
 import Foundation
+import ReadWriteLock
 
 final class LRUCache<Key: Hashable, Value> {
     private struct CachePayload {
@@ -34,6 +35,7 @@ final class LRUCache<Key: Hashable, Value> {
     private let initCapacity: Int
     private let maxCapacity: Int
 
+    private let lock = ReadWriteLock()
     init(_ capacity: Int) {
         self.initCapacity = 0
         self.maxCapacity = max(0, capacity)
@@ -43,10 +45,10 @@ final class LRUCache<Key: Hashable, Value> {
         self.initCapacity = initCapacity
         self.maxCapacity = max(initCapacity, maxCapacity)
     }
-
-    func setValue(_ value: Value, for key: Key) {
+    
+    func setValueWithoutLock(_ value: Value, for key: Key) {
         let payload = CachePayload(key: key, value: value)
-
+        
         if let node = self.nodesDict[key] {
             node.payload = payload
             self.list.moveToHead(node)
@@ -54,7 +56,7 @@ final class LRUCache<Key: Hashable, Value> {
             let node = self.list.addHead(payload)
             self.nodesDict[key] = node
         }
-
+        
         if self.list.count > self.maxCapacity {
             let nodeRemoved = self.list.removeLast()
             if let key = nodeRemoved?.payload.key {
@@ -63,31 +65,91 @@ final class LRUCache<Key: Hashable, Value> {
         }
     }
 
-    func getValue(for key: Key) -> Value? {
-        guard let node = nodesDict[key] else {
-            return nil
+    func setValue(_ value: Value, for key: Key) {
+        lock.acquireWriteLock {
+            
+            let payload = CachePayload(key: key, value: value)
+            
+            if let node = self.nodesDict[key] {
+                node.payload = payload
+                self.list.moveToHead(node)
+            } else {
+                let node = self.list.addHead(payload)
+                self.nodesDict[key] = node
+            }
+            
+            if self.list.count > self.maxCapacity {
+                let nodeRemoved = self.list.removeLast()
+                if let key = nodeRemoved?.payload.key {
+                    self.nodesDict[key] = nil
+                }
+            }
         }
+    }
 
-        list.moveToHead(node)
-        return node.payload.value
+    func keys() -> [Key] {
+        var keys: [Key] = []
+        self.nodesDict.forEach { (k, v) in
+            keys.append(k)
+        }
+        
+        return keys
     }
     
+    func getValue(for key: Key) -> Value? {
+        lock.acquireReadLock {
+            guard let node = nodesDict[key] else {
+                return nil
+            }
+            
+            list.moveToHead(node)
+            return node.payload.value
+        }
+    }
+    
+    func getValue(for key: Key, _ filter: () throws -> Value?) throws -> Value? {
+        try lock.acquireReadLock {
+            var node = nodesDict[key]
+            var value = node?.payload.value
+            if node == nil || value == nil {
+                value = try filter()
+                guard let _ = value else {
+                    return nil
+                }
+                // TODO Lock
+                if maxCapacity == 0 {
+                    return value
+                }
+                setValueWithoutLock(value!, for: key)
+                node = nodesDict[key]
+            }
+            
+            list.moveToHead(node!)
+            let result = node!.payload.value
+            return result
+        }
+    }
+
     func containsKey(for key: Key) -> Bool {
         let value = nodesDict[key]
         return value != nil
     }
     
     func clear() {
-        self.list.clear()
-        self.nodesDict.removeAll()
+        lock.acquireWriteLock {
+            self.list.clear()
+            self.nodesDict.removeAll()
+        }
     }
 
     func removeValue(for key: Key) {
-        guard let node = nodesDict[key] else {
-            return
+        lock.acquireWriteLock {
+            guard let node = nodesDict[key] else {
+                return
+            }
+            list.removeNode(node)
+            nodesDict.removeValue(forKey: key)
         }
-        list.removeNode(node)
-        nodesDict.removeValue(forKey: key)
     }
 }
 
@@ -157,6 +219,7 @@ final class DoubleLinkedList<T> {
         next?.previous = previous
 
         node.next = head
+        head?.previous = node
         node.previous = nil
 
         if node === tail {
